@@ -1,0 +1,21 @@
+---
+import { AstroSeo } from "@astrolib/seo";
+import Form from "../components/contact/Form.astro";
+import Footer from "../components/global/Footer.astro";
+import Navigation from "../components/global/Navigation.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<!---
+Use AstroSeo in all the pages you want different Seo than the index page
+-->
+<AstroSeo
+    title="Chance Software"
+    description="Simple software, for complex problems"
+    canonical="https://chancesoftwarellc.com"
+/>
+<BaseLayout>
+    <Navigation />
+    <Form />
+    <Footer />
+</BaseLayout>

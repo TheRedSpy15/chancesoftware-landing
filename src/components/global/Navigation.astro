@@ -1,0 +1,56 @@
+<div class="w-full mx-auto bg-black justify-center border-b">
+    <div
+        class="flex w-full flex-col lg:flex-row lg:items-center lg:justify-between max-w-7xl mx-auto px-8 py-2"
+        x-data="{ open: false }"
+    >
+        <div class="flex items-center flex-row justify-between text-white">
+            <a href="/" class="group block flex-shrink-0">
+                <div class="flex items-center">
+                    <div class="ml-3">
+                        <p
+                            class="uppercase italic font-medium text-white group-hover:text-gray-300"
+                        >
+                            Chance Software
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+            <button
+                @click="open = !open"
+                class="focus:shadow-outline focus:outline-none md:hidden rounded-lg"
+                ><svg
+                    class="h-8 w-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        d="M4 6h16M4 12h16M4 18h16"
+                        :class="{'hidden': open, 'inline-flex': !open }"
+                        class="inline-flex"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"></path>
+                    <path
+                        d="M6 18L18 6M6 6l12 12"
+                        :class="{'hidden': !open, 'inline-flex': open }"
+                        class="hidden"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"></path>
+                </svg>
+            </button>
+        </div>
+        <nav
+            :class="{'flex': open, 'hidden': !open}"
+            class="flex-grow flex-col hidden items-center lg:flex lg:flex-row lg:justify-start lg:mt-0 gap-3 lg:gap-6 lg:p-0 lg:px-0 md:pb-0 opacity-100 p-4 px-5"
+        >
+            <a
+                class="text-white/60 text-sm duration-200 ease-in-out focus:outline-none focus:shadow-none focus:text-white/5 hover:text-white lg:py-4 md:my-0 py-2 transform transition lg:ml-auto"
+                href="/contact"
+                >Contact
+            </a>
+        </nav>
+    </div>
+</div>
