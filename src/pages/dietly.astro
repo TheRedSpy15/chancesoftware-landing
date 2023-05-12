@@ -1,0 +1,23 @@
+---
+import { AstroSeo } from "@astrolib/seo";
+import Footer from "../components/global/Footer.astro";
+import Navigation from "../components/global/Navigation.astro";
+import Content from "../components/projects/dietly/Content.astro";
+import Hero from "../components/projects/dietly/Hero.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<!---
+Use AstroSeo in all the pages you want different Seo than the index page
+-->
+<AstroSeo
+    title="Dietly"
+    description="Point based diet tracking app"
+    canonical="https://chancesoftwarellc.com/dietly"
+/>
+<BaseLayout>
+    <Navigation />
+    <Hero />
+    <Content />
+    <Footer />
+</BaseLayout>

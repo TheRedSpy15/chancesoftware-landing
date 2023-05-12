@@ -10,5 +10,6 @@
 @supports (font-variation-settings: normal) {
     :root {
         font-family: 'Inter var', sans-serif;
+        font-display: swap;
     }
 }
