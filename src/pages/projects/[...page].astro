@@ -1,0 +1,44 @@
+---
+import Container from "@components/container.astro";
+import Pagination from "@components/projects/pagination.astro";
+import Posts from "@components/projects/posts.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths({ paginate }) {
+	var projects = await getCollection("projects", ({ data }) => {
+		return !data.draft;
+	});
+	// Preprocess the posts to split the slugs and get the languages
+	var processedProjects = projects.map((post) => {
+		const [...slug] = post.slug.split("/");
+		let lang = "en";
+		var firstSlug = post.slug.match(/^([^\/]*)\//);
+		if (firstSlug) {
+			lang = firstSlug[1];
+		}
+		return {
+			...post,
+			slug: slug.join("/"),
+			lang: lang,
+		};
+	});
+	return paginate(processedProjects, {
+		params: { projects: "projects" || undefined },
+		pageSize: 4,
+	});
+}
+const { page } = Astro.props;
+---
+
+<Layout title="Projects">
+	<Container>
+		<Sectionhead>
+			<Fragment slot="title">Our Projects</Fragment>
+			<Fragment slot="desc">All of the showcase worthy ones</Fragment>
+		</Sectionhead>
+		<Posts posts={page.data} />
+		<Pagination class="mt-20" prevUrl={page.url.prev} nextUrl={page.url.next} />
+	</Container>
+</Layout>

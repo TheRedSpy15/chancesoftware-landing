@@ -1,0 +1,80 @@
+---
+import { SEO } from "astro-seo";
+import Footer from "@components/footer.astro";
+import Navbar from "@components/navbar/navbar.astro";
+import { pwaInfo } from "virtual:pwa-info";
+import "@fontsource-variable/inter";
+import { ViewTransitions } from "astro:transitions";
+
+export interface Props {
+	title: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const resolvedImageWithDomain = new URL("/meta/opengraph.png", Astro.site).toString();
+
+// replaced dynamically
+const buildDate = __DATE__;
+
+const { title } = Astro.props;
+
+const makeTitle = title ? title + " | " + "Chance Software LLC" : "Chance Software LLC - Portfolio";
+---
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="theme-color" content="#ffffff" />
+
+		<ViewTransitions />
+
+		<!-- Global CSS -->
+		<link rel="stylesheet" href="/index.css" />
+
+		<SEO
+			title={makeTitle}
+			description="My Portfolio Website"
+			canonical={canonicalURL}
+			openGraph={{
+				basic: {
+					url: canonicalURL,
+					type: "website",
+					title: `Chance Software LLC`,
+					image: resolvedImageWithDomain,
+				},
+				image: {
+					alt: "Astros Homepage Screenshot",
+				},
+			}}
+		/>
+
+		<script is:inline>
+			function handleThemeChange() {
+				document.documentElement.classList.add("dark");
+			}
+			handleThemeChange();
+			document.removeEventListener("astro:after-swap", handleThemeChange);
+			document.addEventListener("astro:after-swap", handleThemeChange);
+		</script>
+
+		{pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+		<script src="/src/pwa.ts"></script>
+	</head>
+	<body class="bg-stone-950">
+		<Navbar />
+		<slot />
+		<Footer />
+		<style is:global>
+			/* Improve Page speed */
+			/* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+			img {
+				content-visibility: auto;
+			}
+		</style>
+	</body>
+</html>

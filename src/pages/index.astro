@@ -1,23 +1,15 @@
 ---
-import { AstroSeo } from "@astrolib/seo";
-import Footer from "../components/global/Footer.astro";
-import Navigation from "../components/global/Navigation.astro";
-import Entries from "../components/landing/Entries.astro";
-import Hero from "../components/landing/Hero.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "@components/container.astro";
+import Faq from "@components/faq.astro";
+import Features from "@components/features.astro";
+import Hero from "@components/hero.astro";
+import Layout from "@layouts/Layout.astro";
 ---
 
-<!---
-Use AstroSeo in all the pages you want different Seo than the index page
--->
-<AstroSeo
-    title="Chance Software"
-    description="Simple software, for complex problems"
-    canonical="https://chancesoftwarellc.com"
-/>
-<BaseLayout>
-    <Navigation />
-    <Hero />
-    <Entries />
-    <Footer />
-</BaseLayout>
+<Layout>
+	<Container>
+		<Hero />
+		<Features />
+		<Faq />
+	</Container>
+</Layout>

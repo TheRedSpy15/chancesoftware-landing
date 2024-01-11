@@ -1,0 +1,77 @@
+---
+// @ts-ignore
+import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon";
+
+const features = [
+	{
+		title: "Mobile Development",
+		description: "Always native and always performant. We can create mobile apps for iOS and Android",
+		icon: "bx:bxs-mobile",
+	},
+	{
+		title: "Web Development",
+		description: "Wanna be one of the cool kids? We can create a website for you, or your business",
+		icon: "bx:bxs-window-alt",
+	},
+	{
+		title: "Desktop Applications",
+		description: "Sick of everything being web based? We can create native desktop applications for Windows, Mac, and Linux",
+		icon: "bx:bxs-server",
+	},
+	{
+		title: "Backend Development",
+		description: "Need a program that doesn't have a user interface? We can create a backend for your application, or even a full API",
+		icon: "bx:bxs-server",
+	},
+	{
+		title: "Embedded Development",
+		description: "Whatever you engineer has in mind, we can create the software for your hardware",
+		icon: "bx:bx-code",
+	},
+	{
+		title: "Everything else",
+		description: "If it involves code, we can do it.",
+		icon: "bx:bxs-window-alt",
+	},
+];
+---
+
+<div class="relative mx-auto max-w-5xl px-6 lg:px-8">
+	<div class="mx-auto max-w-2xl lg:text-center">
+		<h2 class="text-base font-semibold leading-7 text-white">Full Stack Development</h2>
+		<p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">You need it, we can build it</p>
+		<p class="mt-6 text-lg leading-8 text-gray-100">
+			With our years of experience, we can use the right tools for the job to create the perfect solution for you
+		</p>
+	</div>
+	<div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+		<dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+			{
+				features.map((item) => (
+					<div class="flex flex-col">
+						<dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-white">
+							<div class="h-5 w-5 flex-none text-white">
+								<Icon name={item.icon} />
+							</div>
+							{item.title}
+						</dt>
+						<dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-100">
+							<p class="flex-auto">{item.description}</p>
+							<p class="mt-6">
+								{item.url && (
+									<Link href={item.url} style="muted" size="xs" class="leading-6 text-left text-white">
+										{"features.learn_more"}{" "}
+										<span class="pl-1 text-white" aria-hidden="true">
+											→
+										</span>
+									</Link>
+								)}
+							</p>
+						</dd>
+					</div>
+				))
+			}
+		</dl>
+	</div>
+</div>

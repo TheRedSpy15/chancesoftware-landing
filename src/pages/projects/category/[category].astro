@@ -1,0 +1,38 @@
+---
+import Container from "@components/container.astro";
+import Posts from "@components/projects/posts.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("projects", ({ data }) => {
+		return !data.draft && data.publishDate < new Date();
+	});
+	const categories = new Set();
+	posts.map((post) => {
+		typeof post.data.category === "string" && categories.add(post.data.category.toLowerCase());
+	});
+	return Array.from(categories).map((category) => {
+		return {
+			params: { category: category },
+			props: {
+				posts: posts.filter((post) => typeof post.data.category === "string"),
+				category: category,
+			},
+		};
+	});
+}
+// Get the post directly from the prop on render
+const { posts, category } = Astro.props;
+---
+
+<Layout title="Projects">
+	<Container>
+		<Sectionhead>
+			<Fragment slot="title">#{category}</Fragment>
+			<Fragment slot="desc">We write about building startups and thoughts going on our mind.</Fragment>
+		</Sectionhead>
+		<Posts posts={posts} />
+	</Container>
+</Layout>
