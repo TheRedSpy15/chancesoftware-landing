@@ -2,6 +2,7 @@ import alpinejs from "@astrojs/alpinejs";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import AstroPWA from "@vite-pwa/astro";
+import icon from "astro-icon";
 import lottie from "astro-integration-lottie";
 import { defineConfig } from "astro/config";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -18,7 +19,7 @@ export default defineConfig({
             __DATE__: `'${new Date().toISOString()}'`
         }
     },
-    integrations: [tailwind(), sitemap(), alpinejs(), lottie(), AstroPWA({
+    integrations: [tailwind(), icon(), sitemap(), alpinejs(), lottie(), AstroPWA({
         mode: "production",
         base: "/",
         scope: "/",

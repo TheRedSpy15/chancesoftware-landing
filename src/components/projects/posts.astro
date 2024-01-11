@@ -1,6 +1,4 @@
 ---
-import { Icon } from "astro-icon";
-
 export interface Props {
 	posts: Array<any>;
 }
@@ -21,21 +19,6 @@ const { posts } = Astro.props;
 					<div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
 					<div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
 
-					<div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
-						<time datetime={projectPostEntry.data.publishDate.toDateString()} class="mr-8">
-							{projectPostEntry.data.publishDate.toDateString()}
-						</time>
-						<div class="-ml-4 flex items-center gap-x-4">
-							<svg viewBox="0 0 2 2" class="-ml-0.5 h-0.5 w-0.5 flex-none fill-white/50">
-								<circle cx="1" cy="1" r="1" />
-							</svg>
-							<div class="flex gap-x-2.5">
-								<Icon name="carbon:user-avatar-filled-alt" width="20" />
-								{projectPostEntry.data.author}
-							</div>
-						</div>
-					</div>
-
 					<h3 class="mt-3 text-lg font-semibold leading-6 text-white">
 						<a
 							href={
@@ -47,10 +30,6 @@ const { posts } = Astro.props;
 							{projectPostEntry.data.title}
 						</a>
 					</h3>
-
-					<h4 class="pt-3 text-xs font-medium text-gray-300 uppercase tracking-wider">
-						<a href={`/category/${projectPostEntry.data.category?.toLowerCase()}`}>{projectPostEntry.data.category}</a>
-					</h4>
 				</article>
 			))
 		}

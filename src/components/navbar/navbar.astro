@@ -1,7 +1,7 @@
 ---
 import Button from "@components/ui/button.astro";
 import Link from "@components/ui/link.astro";
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 export const menuitems = [
 	/* {
@@ -30,8 +30,8 @@ export const menuitems = [
 		<a
 			href="/"
 			class="flex gap-3 items-center text-lg font-semibold tracking-widest uppercase rounded-lg text-white focus:outline-none focus:shadow-outline">
-			<Icon name="bx:bx-code-alt" width="30" alt="Logo" />
-			 Chance Software LLC
+			<Icon name="bx:bx-code-alt" width={30} />
+			Chance Software LLC
 		</a>
 		<button class="md:hidden text-gray-500 w-10 h-10 relative focus:outline-none" @click="open = !open">
 			<span class="sr-only">Open main menu</span>
