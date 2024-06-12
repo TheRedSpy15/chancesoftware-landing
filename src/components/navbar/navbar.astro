@@ -12,14 +12,14 @@ export const menuitems = [
 			{ title: "Subitem 3", path: "#" },
 		],
 	}, */
-	{
+	/* {
 		title: "Projects",
 		path: "/projects",
-	},
-	{
+	}, */
+	/* {
 		title: "Contact",
 		path: "/contact",
-	},
+	}, */
 ];
 ---
 
@@ -33,7 +33,7 @@ export const menuitems = [
 			<Icon name="bx:bx-code-alt" width={30} />
 			Chance Software LLC
 		</a>
-		<button class="md:hidden text-gray-500 w-10 h-10 relative focus:outline-none" @click="open = !open">
+		<!-- <button class="md:hidden text-gray-500 w-10 h-10 relative focus:outline-none" @click="open = !open">
 			<span class="sr-only">Open main menu</span>
 			<div class="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
 				<span
@@ -52,7 +52,7 @@ export const menuitems = [
 					:class="{'-rotate-45': open, ' translate-y-1.5': !open}">
 				</span>
 			</div>
-		</button>
+		</button> -->
 	</div>
 	<nav
 		:class="{'flex': open, 'hidden': !open}"

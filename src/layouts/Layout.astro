@@ -12,8 +12,6 @@ export interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
-const resolvedImageWithDomain = new URL("/meta/opengraph.png", Astro.site).toString();
-
 // replaced dynamically
 const buildDate = __DATE__;
 
@@ -36,22 +34,7 @@ const makeTitle = title ? title + " | " + "Chance Software LLC" : "Chance Softwa
 		<!-- Global CSS -->
 		<link rel="stylesheet" href="/index.css" />
 
-		<SEO
-			title={makeTitle}
-			description="My Portfolio Website"
-			canonical={canonicalURL}
-			openGraph={{
-				basic: {
-					url: canonicalURL,
-					type: "website",
-					title: `Chance Software LLC`,
-					image: resolvedImageWithDomain,
-				},
-				image: {
-					alt: "Astros Homepage Screenshot",
-				},
-			}}
-		/>
+		<SEO title={makeTitle} description="Chance Software LLC" canonical={canonicalURL} />
 
 		<script is:inline>
 			function handleThemeChange() {
